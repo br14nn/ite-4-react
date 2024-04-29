@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%= heading %>
+    <%= song %>
+
+
+    <%for(let i = 0; i < itemData.length; i++) { %>
+        <h3><%= itemData[i].data()["author"] %></h3>
+        <%for(let j = 0; j < itemData[i].data()['songs'].length; j++) { %>
+            <h3><%= itemData[i].data()["songs"][j] %></h3>
+            
+        <% } %>
+    <% } %>
+
+</body>
+</html>

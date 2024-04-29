@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include('../partials/head'); %>
+    <style>
+        .flag{
+            margin-top: 50px;
+            border: 3px solid gray;
+            border-radius: 50px;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+   <!-- <h1>Welcome to Davao</h1> -->
+   <!-- <%- weatherdvo %> -->
+
+   <center>
+    <div>
+        <img src ="https://cdn-icons-png.flaticon.com/512/197/197561.png" class="flag"/>
+        <h4><%= weatherdvo[0].location.name %> </h4>
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Date</th>
+                <th>Weather</th>
+                <th>Icon</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="table-success">
+                <td>Today, <%= weatherdvo[1].current.day %></td>
+                <td><%= weatherdvo[1].current.date %></td>
+                <td><%= weatherdvo[1].current.skytext %></td>
+                <td><img src="<%= weatherdvo[1].current.imageUrl%>" /></td>
+            </tr>
+            <tr class="table-info">
+                <td><%= weatherdvo[1].forecast[1].day %></td>
+                <td><%= weatherdvo[1].forecast[1].date %></td>
+                <td><%= weatherdvo[1].forecast[1].skytextday %></td>
+                <td></td>
+            </tr>
+            <tr class="table-info">
+                <td><%= weatherdvo[1].forecast[2].day %></td>
+                <td><%= weatherdvo[1].forecast[2].date %></td>
+                <td><%= weatherdvo[1].forecast[2].skytextday %></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+   </center>
+</main>
+</body>
+</html>

@@ -35,6 +35,7 @@ app.use(
     optionsSuccessStatus: 200,
   })
 );
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("Hello World");
@@ -43,8 +44,22 @@ app.get("/", (req, res) => {
 app.get("/students", async (req, res) => {
   const studentsSnapshot = await studentColl.get();
   const studentsList = studentsSnapshot.docs.map((doc) => doc.data());
-
   res.json(studentsList);
+});
+
+app.post("/students", async (req, res) => {
+  const { name, course, age, subjects } = req.body;
+  try {
+    const docRef = await studentColl.add({
+      name,
+      age,
+      course,
+      subjects,
+    });
+    res.json({ message: docRef.id });
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 app.listen(port, () => {

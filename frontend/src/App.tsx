@@ -3,7 +3,8 @@ import { nanoid } from "nanoid";
 import axios from "axios";
 
 export default function () {
-  const [students, setStudents] = useState<{ name: string; course: string; subjects: [] }[]>();
+  const [students, setStudents] =
+    useState<{ name: string; course: string; age: number; subjects: [] }[]>();
   useEffect(() => {
     const getStudents = async () => {
       const res = await axios.get("http://localhost:3333/students");
@@ -20,6 +21,7 @@ export default function () {
           <tr>
             <th className="border border-white p-4">Name</th>
             <th className="border border-white p-4">Course</th>
+            <th className="border border-white p-4">Age</th>
             <th className="border border-white p-4">Subjects</th>
           </tr>
         </thead>
@@ -29,7 +31,7 @@ export default function () {
               <tr key={nanoid()}>
                 <td className="border border-white px-4 py-2">{item.name}</td>
                 <td className="border border-white px-4 py-2">{item.course}</td>
-
+                <td className="border border-white px-4 py-2">{item.age}</td>
                 <td className="border border-white px-4 py-2 flex flex-col">
                   {item.subjects.map((subject, id) => (
                     <span key={nanoid()}>
@@ -45,6 +47,9 @@ export default function () {
 
       <a className="text-blue-500 underline" href="/home">
         Go To Home Page
+      </a>
+      <a className="text-blue-500 underline" href="/addstudent">
+        Go To Add Student Page
       </a>
     </main>
   );

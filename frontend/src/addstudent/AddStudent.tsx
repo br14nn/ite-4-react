@@ -1,7 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function () {
+  const navigate = useNavigate();
   const [addStudentForm, setAddStudentForm] = useState<{
     name: string;
     course: string;
@@ -21,7 +23,7 @@ export default function () {
       return alert("Please select at least one subject!");
     }
     const res = await axios.post("http://localhost:3333/students", addStudentForm);
-    console.log(res.data);
+    navigate("/");
   };
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
